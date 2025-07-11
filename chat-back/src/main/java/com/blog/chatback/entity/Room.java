@@ -15,7 +15,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@MappedSuperclass
 @NamedEntityGraph(
         name = "Room.withParticipants",
         attributeNodes = @NamedAttributeNode("participants")

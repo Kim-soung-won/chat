@@ -15,7 +15,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@MappedSuperclass
 public class Message extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
