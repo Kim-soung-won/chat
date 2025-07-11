@@ -1,0 +1,74 @@
+.notification-bar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  min-width: 400px;
+  max-width: 600px;
+  padding: 16px;
+  z-index: 1000;
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.notification-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.hide-button {
+  background-color: transparent;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.notification-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-item {
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  border-top: 1px solid #eee;
+}
+
+.notification-item:first-child {
+  border-top: none;
+}
+
+.notification-item.성공 .status {
+  color: green;
+}
+
+.notification-item.실패 .status {
+  color: red;
+}
+
+.notification-item.진행중 .status {
+  color: orange;
+}
+
+.status {
+  font-weight: 600;
+  min-width: 60px;
+}
+
+.message {
+  flex: 1;
+}

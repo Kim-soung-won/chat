@@ -1,0 +1,74 @@
+.container {
+  position: relative;
+  display: inline-block;
+  font-family: sans-serif;
+  width: 200px;
+}
+
+.titleContainer {
+  padding: 12px 18px;
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+}
+
+/**
+* 메뉴 제목 컨테이너에 마우스를 올렸을 때의 스타일
+*/
+.titleContainer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/**
+* 메뉴 제목 컨테이너를 클릭했을 때의 스타일
+*/
+.titleContainer:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.menu {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  min-width: 200px;
+  z-index: 1000;
+  list-style: none;
+  margin: 0;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/**
+* 자식 메뉴 마우스 Hover시 색상변화
+*/
+.menuItem:hover {
+  background-color: #f0f0f0;
+}
+
+.menuLink {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.icon {
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,1 @@
+export { AnimatedDots } from "./animated-dots";

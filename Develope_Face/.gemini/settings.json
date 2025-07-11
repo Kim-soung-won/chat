@@ -1,0 +1,62 @@
+{
+  "mcpServers": {
+    /** postgres DB 서버 접근, DB 컨트롤
+     */
+    "postgresql-mcp": {
+      "command": "node",
+      "args": [
+        "/Users/metabuild/Desktop/private/mcp-servers/postgresql-mcp-server/build/index.js",
+        "--connection-string",
+        "postgresql://postgres:1234asd@localhost:5432/postgres"
+      ],
+      "disabled": false,
+      "alwaysAllow": []
+    },
+    /** DesktopCommander: 컴퓨터 제어
+     * read_file: 단일 파일의 내용 읽기
+     * read_multiple_files_file: 여러 파일의 내용 읽기
+     * write_file: 파일 생성, 내용 추가
+     * edit_block: 파일의 내용 중 특정 부분만 정교하게 찾아 바꾼다.
+     * create_directory: 새로운 폴더 생성
+     * move_file: 파일이나 폴더 이동, 이름 변경
+     * execute_command: 터미널 명령어 실해
+     * read_output: 실행중인 터미널 세션의 새로운 출력내용 읽기
+     * list_processes: 현재 실행중인 모든 시스템의 프로세스 목록 확인
+     * kill_process: 프로세스 ID를 이용해 특정 프로세스 종료
+     */
+    "desktop-commander": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@wonderwhy-er/desktop-commander",
+        "--key",
+        "1a66fa56-fda3-4d4e-9679-841187e5c4dc"
+      ],
+      "allowedDirectories": [
+        "/Users/metabuild/Desktop/private/blog/Develop_face/"
+      ]
+    },
+
+    // Exa: 웹 검색, 크롤링 도구
+    /** Tools
+     * web_search_exa: 일반 웹 검색
+     * github_search_exa: Github 내부의 정보만 전문적으로 검색
+     * crawling_exa: 웹사이트 크롤링 URL을 지정하여 읽고 요약, 해석해줘
+     * research_paper_search_exa: 학술 논문 검색
+     * company_research_exa: 비즈니스 정보 리서치 (뉴스, 재무 등)
+     */
+    "exa": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "exa",
+        "--key",
+        "1a66fa56-fda3-4d4e-9679-841187e5c4dc"
+      ]
+    }
+  }
+}

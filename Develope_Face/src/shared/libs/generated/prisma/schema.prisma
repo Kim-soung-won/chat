@@ -1,0 +1,95 @@
+// Prisma Schema 정의 파일
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+
+  // generated 기본 파일 경로
+  output = "../src/shared/libs/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+  schemas   = ["blog", "chat"]
+}
+
+model Post {
+  post_id          BigInt   @id @default(autoincrement())
+  title            String
+  markdown_content String
+  created_at       DateTime @default(now())
+
+  images PostImages[]
+
+  @@map("post") // 실제 DB 테이블명이 post임을 명시
+  @@schema("blog")
+}
+
+model PostImages {
+  id                BigInt   @id @default(autoincrement())
+  post_id           BigInt
+  image_url         String   @unique // Supabase Storage의 공개 URL 
+  storage_file_path String   @unique // Storage 내 실제 파일 경로 
+  alt_text          String?
+  file_name         String?
+  mime_type         String?
+  size_kb           Int?
+  created_at        DateTime @default(now())
+
+  post Post @relation(fields: [post_id], references: [post_id], onDelete: Cascade)
+
+  @@map("post_images") // 실제 DB 테이블명이 post_images임을 명시
+  @@schema("blog")
+}
+
+model User {
+  id         String   @id @default(uuid()) @map("id")
+  username   String   @unique
+  created_at DateTime @default(now()) @map("created_at")
+
+  messages          Message[]
+  room_participants RoomParticipant[]
+
+  @@map("users")
+  @@schema("chat")
+}
+
+model Room {
+  id         String   @id @default(uuid()) @map("id")
+  name       String
+  created_at DateTime @default(now()) @map("created_at")
+
+  messages          Message[]
+  room_participants RoomParticipant[]
+
+  @@map("rooms")
+  @@schema("chat")
+}
+
+model Message {
+  id         String   @id @default(uuid()) @map("id")
+  room_id    String   @map("room_id")
+  user_id    String   @map("user_id")
+  content    String
+  created_at DateTime @default(now()) @map("created_at")
+
+  room Room @relation(fields: [room_id], references: [id])
+  user User @relation(fields: [user_id], references: [id])
+
+  @@map("messages")
+  @@schema("chat")
+}
+
+model RoomParticipant {
+  room_id String @map("room_id")
+  user_id String @map("user_id")
+
+  room Room @relation(fields: [room_id], references: [id])
+  user User @relation(fields: [user_id], references: [id])
+
+  @@id([room_id, user_id])
+  @@map("room_participants")
+  @@schema("chat")
+}
