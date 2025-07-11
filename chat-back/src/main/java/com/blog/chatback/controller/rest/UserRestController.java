@@ -1,5 +1,6 @@
-package com.blog.chatback.Controller;
+package com.blog.chatback.controller.rest;
 
+import com.blog.chatback.controller.BaseRestController;
 import com.blog.chatback.entity.User;
 import com.blog.chatback.service.Base.BaseService;
 import com.blog.chatback.service.User.UserDto;
@@ -12,7 +13,7 @@ import java.util.UUID;
 
 @RequestMapping("/user")
 @RestController
-public class UserRestController extends BaseRestController<User, UserDto, UUID>{
+public class UserRestController extends BaseRestController<User, UserDto, UUID> {
 
     @Override
     @Autowired

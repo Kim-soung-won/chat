@@ -1,4 +1,4 @@
-package com.blog.chatback.Controller;
+package com.blog.chatback.controller;
 
 import com.blog.chatback.exception.BackendException;
 import com.blog.chatback.service.Base.BaseService;

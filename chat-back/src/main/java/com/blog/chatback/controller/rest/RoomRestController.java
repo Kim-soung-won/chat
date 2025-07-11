@@ -1,5 +1,6 @@
-package com.blog.chatback.Controller;
+package com.blog.chatback.controller.rest;
 
+import com.blog.chatback.controller.BaseRestController;
 import com.blog.chatback.entity.Room;
 import com.blog.chatback.service.Base.BaseService;
 import com.blog.chatback.service.Room.RoomDto;

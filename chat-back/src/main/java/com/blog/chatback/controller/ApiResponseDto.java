@@ -1,4 +1,4 @@
-package com.blog.chatback.Controller;
+package com.blog.chatback.controller;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

@@ -1,5 +1,6 @@
-package com.blog.chatback.Controller;
+package com.blog.chatback.controller.rest;
 
+import com.blog.chatback.controller.BaseRestController;
 import com.blog.chatback.entity.Message;
 import com.blog.chatback.service.Base.BaseService;
 import com.blog.chatback.service.Message.MessageDto;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
-@RequestMapping("/Message")
+@RequestMapping("/message")
 @RestController
 public class MessageRestController extends BaseRestController<Message, MessageDto, UUID> {
 
