@@ -1,35 +1,44 @@
 package com.blog.chatback.service.Base;
 
 import com.blog.chatback.exception.BackendException;
+import com.blog.chatback.repository.BaseRepository;
 import com.blog.chatback.util.DataTypeUtil;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 @Slf4j
 public abstract class BaseService<E, D, ID>{
 
-    protected JpaRepository<E, ID> repository;
+    protected BaseRepository<E, ID> repository;
 
-    public BaseService(JpaRepository<E, ID> repository) {
+    public BaseService(BaseRepository<E, ID> repository) {
         this.repository = repository;
     }
 
     public BaseService() {}
 
-    abstract public void setRepository(JpaRepository<E, ID> repository);
+    abstract public void setRepository(BaseRepository<E, ID> repository);
     protected ObjectMapper mapper = new ObjectMapper();
     abstract public <D> Class<D> getDtoClazz();
     protected int pkType = 1;
@@ -61,9 +70,50 @@ public abstract class BaseService<E, D, ID>{
         this.pkType = DataTypeUtil.checkType(idType);
     }
 
+    protected D toDto(Object o) throws BackendException {
+
+        Class<D> clazz = null;
+        if (o instanceof Map) {
+            clazz = this.getDtoClazz();
+            o = mapper.convertValue(o, clazz);
+        }
+        return (D) o;
+
+    }
+
     public D save(D dto) throws BackendException {
         repository.save(this.toEntity(dto));
         return null;
+    }
+
+    @Transactional(readOnly = true)
+    public List<D> getAll() throws BackendException {
+        return (List<D>) this.repository.findAll();
+    }
+
+    /**
+     * pid 필드에 해당하는 값이 같은 데이터만 조회
+     * @param pidField 필드 이름
+     * @param pid 필드 값
+     * @return 조회 결과 DTO List
+     * @throws BackendException
+     */
+    @Transactional(readOnly = true)
+    public List<D> getAllByPid(String pidField, String pid) throws BackendException {
+        Specification<E> spec = new Specification<E>() {
+            @Override
+            public Predicate toPredicate(Root<E> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.equal(root.get(pidField), pid);
+            }
+        };
+        List<E> entities = repository.findAll(spec);
+        return entities.stream().map(e -> {
+            try {
+                return this.toDto(e);
+            } catch (BackendException ex) {
+                throw new RuntimeException(ex);
+            }
+        }).toList();
     }
 
 

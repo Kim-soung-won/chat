@@ -16,6 +16,13 @@ public class MessageDto extends BaseDto {
     private UUID roomId;
     private UUID userId;
 
+    public MessageDto(Message message) {
+        super(message);
+        this.content = message.getContent();
+        this.roomId = message.getRoomId();
+        this.userId = message.getUserId();
+    }
+
     @Override
     public Message toEntity() {
         return Message.builder()

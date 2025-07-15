@@ -16,6 +16,12 @@ public class RoomDto extends BaseDto {
     private UUID id;
     private String name;
 
+    public RoomDto(Room room) {
+        super(room);
+        this.id = room.getId();
+        this.name = room.getName();
+    }
+
     @Override
     public Room toEntity() {
         return Room.builder()

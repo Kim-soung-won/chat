@@ -32,9 +32,16 @@ import java.util.UUID;
             }
     )
 })
+@IdClass(RoomParticipantsKey.class)
 public class RoomParticipant{
-    @EmbeddedId
-    private RoomParticipantsKey id;
+
+    @Id
+    @Column(name = "room_id")
+    private UUID roomId;
+
+    @Id
+    @Column(name = "user_id")
+    private UUID userId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id", insertable = false, updatable = false)
@@ -45,13 +52,4 @@ public class RoomParticipant{
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     @MapsId("userId")
     private User user;
-
-    // 편의 메서드
-    public UUID getRoomId() {
-        return id != null ? id.getRoomId() : null;
-    }
-
-    public UUID getUserId() {
-        return id != null ? id.getUserId() : null;
-    }
 }
