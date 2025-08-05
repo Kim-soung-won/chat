@@ -6,6 +6,6 @@ export const UserByRoomRequestParamSchema = z.object({
 
 export const UserResponseParamSchema = z.object({
   id: z.string().uuid(),
-  username: z.string(),
-  created_at: z.date(),
+  userName: z.string(),
+  createdAt: z.string(),
 })

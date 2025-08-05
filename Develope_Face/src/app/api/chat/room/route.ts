@@ -1,6 +1,6 @@
-import { RoomByUserRequestParamSchema } from '@/shared/api/chat/room/room.contracts'
-import { RoomParticipantQuery } from '@/shared/db/chat'
-import { RoomParticipantEntity } from '@/shared/db/chat/room-participant/room-participant.types'
+import { RoomByUserRequestParamSchema } from '@/shared/api/room/room.contracts'
+import { RoomTransform } from '@/shared/bff-api/chat/room'
+import { BffUserService } from '@/shared/bff-api/chat/user/user.service'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
@@ -21,14 +21,17 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     const { userId: validatedUserId } = validationResult.data
 
-    const roomList: { rooms: RoomParticipantEntity[]; count: number } =
-      await RoomParticipantQuery.getRoomListByUserId({
-        userId: validatedUserId,
-        pageNo: 0,
-        size: 10,
-        order: 'desc',
-      })
-    return NextResponse.json(roomList, { status: 200 })
+    const response = await BffUserService.getRoomList({
+      userId: validatedUserId,
+      // pageNo: 0,
+      // size: 10,
+      // order: 'desc',
+    })
+
+    return NextResponse.json(
+      RoomTransform.transformDtosToEntities(response.data.data || []),
+      { status: 200 },
+    )
   } catch (error) {
     if (error instanceof Error) {
       return NextResponse.json({ error: error.message }, { status: 500 })

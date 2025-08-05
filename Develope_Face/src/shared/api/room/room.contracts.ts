@@ -7,5 +7,9 @@ export const RoomByUserRequestParamSchema = z.object({
 export const RoomResponseParamSchema = z.object({
   id: z.string().uuid(),
   name: z.string(),
-  created_at: z.date(),
+  createdAt: z.string(),
 })
+
+export const RoomResponseParamsSchema = z
+  .array(RoomResponseParamSchema)
+  .nullable()

@@ -7,6 +7,7 @@ import com.blog.chatback.exception.BackendException;
 import com.blog.chatback.service.Base.BaseService;
 import com.blog.chatback.service.Room.RoomDto;
 import com.blog.chatback.service.Room.RoomService;
+import com.blog.chatback.service.User.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RequestMapping("/room")
@@ -35,10 +37,10 @@ public class RoomRestController extends BaseRestController<Room, RoomDto, UUID> 
      * 채팅방에 속한 User 목록 조회
      */
     @RequestMapping("/{roomId}/users")
-    public ApiResponseDto getUsersInRoom(
+    public ApiResponseDto<List<UserDto>> getUsersInRoom(
             @PathVariable String roomId
     ) throws BackendException {
-        return new ApiResponseDto(true, roomService.getUserList(roomId));
+        return new ApiResponseDto<List<UserDto>>(true, roomService.getUserList(roomId));
     }
 
 }

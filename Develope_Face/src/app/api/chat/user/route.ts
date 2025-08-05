@@ -1,12 +1,13 @@
-import { UserByRoomRequestParamSchema } from '@/shared/api/chat/user/user.contracts'
-import { UserResponseParam } from '@/shared/api/chat/user/user.type'
-import { RoomParticipantQuery } from '@/shared/db/chat'
+import { UserByRoomRequestParamSchema } from '@/shared/api/user/user.contracts'
+import { BffRoomService } from '@/shared/bff-api/chat/room/room.service'
+import { UserTransform } from '@/shared/bff-api/chat/user'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     const { searchParams } = new URL(request.url)
     const roomId = searchParams.get('roomId')
+    console.log('-------------------------------------------------', roomId)
 
     const validationResult = UserByRoomRequestParamSchema.safeParse({ roomId })
     if (!validationResult.success) {
@@ -21,14 +22,16 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     const { roomId: validatedRoomId } = validationResult.data
 
-    const userList: { users: UserResponseParam[]; count: number } =
-      await RoomParticipantQuery.getUserListByRoomId({
-        roomId: validatedRoomId,
-      })
-    return NextResponse.json(userList, { status: 200 })
+    const response = await BffRoomService.getUserList({
+      roomId: validatedRoomId,
+    })
+    return NextResponse.json(
+      UserTransform.transformDtosToEntities(response.data.data || []),
+      { status: 200 },
+    )
   } catch (error) {
     if (error instanceof Error) {
-      return NextResponse.json({ error: error.message }, { status: 500 })
+      return NextResponse.json({ error: error }, { status: 500 })
     }
     return NextResponse.json(
       { error: '알 수 없는 에러가 발생했습니다.' },
