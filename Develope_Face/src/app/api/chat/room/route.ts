@@ -1,5 +1,5 @@
 import { RoomByUserRequestParamSchema } from '@/shared/api/room/room.contracts'
-import { RoomTransform } from '@/shared/bff-api/chat/room'
+import { RoomBffTransform } from '@/shared/bff-api/chat/room'
 import { BffUserService } from '@/shared/bff-api/chat/user/user.service'
 import { NextRequest, NextResponse } from 'next/server'
 
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     }
 
     const { userId: validatedUserId } = validationResult.data
-
+    console.log('validatedUserId :', validatedUserId)
     const response = await BffUserService.getRoomList({
       userId: validatedUserId,
       // pageNo: 0,
@@ -29,12 +29,18 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     })
 
     return NextResponse.json(
-      RoomTransform.transformDtosToEntities(response.data.data || []),
+      {
+        success: response.data.success,
+        data: RoomBffTransform.transformDtosToEntities(
+          response.data.data || [],
+        ),
+        message: response.data.message,
+      },
       { status: 200 },
     )
   } catch (error) {
     if (error instanceof Error) {
-      return NextResponse.json({ error: error.message }, { status: 500 })
+      return NextResponse.json({ error: error }, { status: 500 })
     }
     return NextResponse.json(
       { error: '알 수 없는 에러가 발생했습니다.' },

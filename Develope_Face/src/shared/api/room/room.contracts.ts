@@ -10,6 +10,4 @@ export const RoomResponseParamSchema = z.object({
   createdAt: z.string(),
 })
 
-export const RoomResponseParamsSchema = z
-  .array(RoomResponseParamSchema)
-  .nullable()
+export const RoomResponseParamsSchema = z.array(RoomResponseParamSchema)

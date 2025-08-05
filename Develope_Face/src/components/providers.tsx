@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { I18nProvider } from './provider/i18nProviderWrapper'
 import { ThemeProviderWrapper } from './provider/ThemeProviderWrapper'
 import { SnackbarProvider } from '@/shared/ui/Bar'
+import QueryProvider from './provider/QueryProvider'
 
 export function DefaultProviders({
   children,
@@ -23,7 +24,9 @@ export function DefaultProviders({
   return (
     <ThemeProviderWrapper>
       <I18nProvider>
-        <SnackbarProvider>{children}</SnackbarProvider>
+        <QueryProvider>
+          <SnackbarProvider>{children}</SnackbarProvider>
+        </QueryProvider>
       </I18nProvider>
     </ThemeProviderWrapper>
   )

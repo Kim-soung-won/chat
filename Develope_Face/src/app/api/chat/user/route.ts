@@ -26,7 +26,11 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       roomId: validatedRoomId,
     })
     return NextResponse.json(
-      UserTransform.transformDtosToEntities(response.data.data || []),
+      {
+        success: response.data.success,
+        data: UserTransform.transformDtosToEntities(response.data.data || []),
+        message: response.data.message,
+      },
       { status: 200 },
     )
   } catch (error) {

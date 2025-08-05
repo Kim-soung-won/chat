@@ -14,7 +14,7 @@ export class BffUserService extends BffService {
    * Room을 구성하는 User 목록 조회
    */
   static getRoomList({ userId }: { userId: string }) {
-    const fullUrl = this.buildFullUrl(`/${userId}/users`)
+    const fullUrl = this.buildFullUrl(`/${userId}/rooms`)
     return baseClient
       .get(fullUrl)
       .then(

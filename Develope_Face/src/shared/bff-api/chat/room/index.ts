@@ -1,1 +1,1 @@
-export * as RoomTransform from './room.lib'
+export * as RoomBffTransform from './room.lib'
