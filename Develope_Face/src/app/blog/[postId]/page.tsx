@@ -1,6 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { useMDXComponents } from '../../../../mdx-component'
-import { PostApiEntity, PostApiEntityDetail } from '@/app/api/posts' // Import the PostApiEntity type
 import Link from 'next/link'
 import { ScrollAnimation } from '@/shared/ui'
 import { getPost } from './fetch'

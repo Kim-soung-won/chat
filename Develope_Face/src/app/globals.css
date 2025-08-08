@@ -1,5 +1,39 @@
 @import 'tailwindcss';
+@import './button.css';
 
 body {
   font-family: var(--font-inter), var(--font-noto-sans-kr), sans-serif;
+}
+
+:root {
+  --page-bg-color: #f3f4f6;
+  --chat-bg-color: #ffffff;
+  --header-bg-color: #ffffff;
+  --footer-bg-color: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --my-message-bg-color: #3b82f6;
+  --my-message-text-color: #ffffff;
+  --other-message-bg-color: #e5e7eb;
+  --other-message-text-color: #1f2937;
+  --input-bg-color: #ffffff;
+  --input-border-color: #d1d5db;
+  --input-text-color: #1f2937;
+  --button-bg-color: #3b82f6;
+  --button-text-color: #ffffff;
+  --top-menu-bar-height: 64px;
+}
+
+html.dark {
+  --page-bg-color: #111827;
+  --chat-bg-color: #1f2937;
+  --header-bg-color: #1f2937;
+  --footer-bg-color: #1f2937;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --other-message-bg-color: #374151;
+  --other-message-text-color: #e5e7eb;
+  --input-bg-color: #374151;
+  --input-border-color: #4b5563;
+  --input-text-color: #ffffff;
 }

@@ -11,6 +11,9 @@ export const pathKeys = {
       root() {
         return pathKeys.Components.root().concat('/basic')
       },
+      GradientButton() {
+        return pathKeys.Components.Basic.root().concat('/gradient')
+      },
       Button() {
         return pathKeys.Components.Basic.root().concat('/button')
       },
@@ -63,6 +66,11 @@ export const MenuItems = [
   {
     text: 'Button',
     path: pathKeys.Components.Basic.Button(),
+    icon: RadioButtonCheckedIcon,
+  },
+  {
+    text: 'Gradient Button',
+    path: pathKeys.Components.Basic.GradientButton(),
     icon: RadioButtonCheckedIcon,
   },
   {

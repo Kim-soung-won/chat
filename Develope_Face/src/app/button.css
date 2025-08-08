@@ -1,0 +1,365 @@
+:root {
+  --btn-padding-y: 0.5rem;
+  --btn-padding-x: 1rem;
+}
+
+button {
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.kkk_bg-red {
+  background: linear-gradient(135deg, #ff6666, #e60000);
+  color: #f5f5f5;
+}
+
+.kkk_bg-red:hover {
+  background: linear-gradient(135deg, #ff6b6b, #c92a2a);
+}
+
+.dark.kkk_bg-red {
+  background: linear-gradient(135deg, #cc4444, #990000);
+  color: #ffffff;
+}
+
+.dark.kkk_bg-red:hover {
+  background: linear-gradient(135deg, #d14d4d, #b30000);
+}
+/* ─── Blue ─── */
+.kkk_bg-blue {
+  background: linear-gradient(135deg, #4da6ff, #0059b3);
+  color: #f5f5f5;
+}
+.kkk_bg-blue:hover {
+  background: linear-gradient(135deg, #66b3ff, #0066cc);
+}
+.dark.kkk_bg-blue {
+  background: linear-gradient(135deg, #337acc, #003366);
+  color: #ffffff;
+}
+.dark.kkk_bg-blue:hover {
+  background: linear-gradient(135deg, #4080d0, #004080);
+}
+
+/* ─── Green ─── */
+.kkk_bg-green {
+  background: linear-gradient(135deg, #66cc66, #006600);
+  color: #f5f5f5;
+}
+.kkk_bg-green:hover {
+  background: linear-gradient(135deg, #70d070, #008000);
+}
+.dark.kkk_bg-green {
+  background: linear-gradient(135deg, #4d994d, #004d00);
+  color: #ffffff;
+}
+.dark.kkk_bg-green:hover {
+  background: linear-gradient(135deg, #59a659, #006600);
+}
+
+/* ─── Yellow ─── */
+.kkk_bg-yellow {
+  background: linear-gradient(135deg, #ffd633, #e6b800);
+  color: #333333;
+}
+.kkk_bg-yellow:hover {
+  background: linear-gradient(135deg, #ffdb4d, #e6c200);
+}
+.dark.kkk_bg-yellow {
+  background: linear-gradient(135deg, #b38f00, #806000);
+  color: #ffffff;
+}
+.dark.kkk_bg-yellow:hover {
+  background: linear-gradient(135deg, #cca300, #997300);
+}
+
+/* ─── Purple ─── */
+.kkk_bg-purple {
+  background: linear-gradient(135deg, #b366ff, #6600cc);
+  color: #f5f5f5;
+}
+.kkk_bg-purple:hover {
+  background: linear-gradient(135deg, #bf80ff, #7300e6);
+}
+.dark.kkk_bg-purple {
+  background: linear-gradient(135deg, #8040b3, #330066);
+  color: #ffffff;
+}
+.dark.kkk_bg-purple:hover {
+  background: linear-gradient(135deg, #8c4dbf, #400080);
+}
+
+/* ─── Pink ─── */
+.kkk_bg-pink {
+  background: linear-gradient(135deg, #ff99cc, #ff1a75);
+  color: #f5f5f5;
+}
+.kkk_bg-pink:hover {
+  background: linear-gradient(135deg, #ffb3d1, #ff3385);
+}
+.dark.kkk_bg-pink {
+  background: linear-gradient(135deg, #b36688, #800040);
+  color: #ffffff;
+}
+.dark.kkk_bg-pink:hover {
+  background: linear-gradient(135deg, #cc7799, #99004d);
+}
+
+/* ─── Teal ─── */
+.kkk_bg-teal {
+  background: linear-gradient(135deg, #66cccc, #006666);
+  color: #f5f5f5;
+}
+.kkk_bg-teal:hover {
+  background: linear-gradient(135deg, #70d0d0, #008080);
+}
+.dark.kkk_bg-teal {
+  background: linear-gradient(135deg, #4d9999, #004d4d);
+  color: #ffffff;
+}
+.dark.kkk_bg-teal:hover {
+  background: linear-gradient(135deg, #59a6a6, #006666);
+}
+
+/* ─── Cyan ─── */
+.kkk_bg-cyan {
+  background: linear-gradient(135deg, #66e0ff, #00b3cc);
+  color: #f5f5f5;
+}
+.kkk_bg-cyan:hover {
+  background: linear-gradient(135deg, #80e6ff, #00cce6);
+}
+.dark.kkk_bg-cyan {
+  background: linear-gradient(135deg, #40b3cc, #006680);
+  color: #ffffff;
+}
+.dark.kkk_bg-cyan:hover {
+  background: linear-gradient(135deg, #4dbfd9, #00738f);
+}
+
+/* ─── Orange ─── */
+.kkk_bg-orange {
+  background: linear-gradient(135deg, #ff9933, #cc5200);
+  color: #f5f5f5;
+}
+.kkk_bg-orange:hover {
+  background: linear-gradient(135deg, #ffad5c, #e65c00);
+}
+.dark.kkk_bg-orange {
+  background: linear-gradient(135deg, #b36b2b, #803300);
+  color: #ffffff;
+}
+.dark.kkk_bg-orange:hover {
+  background: linear-gradient(135deg, #cc7a33, #993d00);
+}
+
+/* ─── Brown ─── */
+.kkk_bg-brown {
+  background: linear-gradient(135deg, #a0522d, #5c3317);
+  color: #f5f5f5;
+}
+.kkk_bg-brown:hover {
+  background: linear-gradient(135deg, #b5653b, #6e3d1d);
+}
+.dark.kkk_bg-brown {
+  background: linear-gradient(135deg, #734026, #3d1f10);
+  color: #ffffff;
+}
+.dark.kkk_bg-brown:hover {
+  background: linear-gradient(135deg, #804d2b, #4d2614);
+}
+
+/* ─── Indigo ─── */
+.kkk_bg-indigo {
+  background: linear-gradient(135deg, #6666ff, #0000cc);
+  color: #f5f5f5;
+}
+.kkk_bg-indigo:hover {
+  background: linear-gradient(135deg, #8080ff, #1a1aff);
+}
+.dark.kkk_bg-indigo {
+  background: linear-gradient(135deg, #4d4db3, #000066);
+  color: #ffffff;
+}
+.dark.kkk_bg-indigo:hover {
+  background: linear-gradient(135deg, #5959bf, #000080);
+}
+
+/* ─── Lime ─── */
+.kkk_bg-lime {
+  background: linear-gradient(135deg, #99ff99, #33cc33);
+  color: #333333;
+}
+.kkk_bg-lime:hover {
+  background: linear-gradient(135deg, #adffad, #40d040);
+}
+.dark.kkk_bg-lime {
+  background: linear-gradient(135deg, #66b366, #1f661f);
+  color: #ffffff;
+}
+.dark.kkk_bg-lime:hover {
+  background: linear-gradient(135deg, #73bf73, #267326);
+}
+
+/* ─── Olive ─── */
+.kkk_bg-olive {
+  background: linear-gradient(135deg, #808000, #4d4d00);
+  color: #f5f5f5;
+}
+.kkk_bg-olive:hover {
+  background: linear-gradient(135deg, #999900, #666600);
+}
+.dark.kkk_bg-olive {
+  background: linear-gradient(135deg, #666600, #333300);
+  color: #ffffff;
+}
+.dark.kkk_bg-olive:hover {
+  background: linear-gradient(135deg, #737300, #404000);
+}
+
+/* ─── Coral ─── */
+.kkk_bg-coral {
+  background: linear-gradient(135deg, #ff7f50, #cc4125);
+  color: #f5f5f5;
+}
+.kkk_bg-coral:hover {
+  background: linear-gradient(135deg, #ff8f66, #e6452b);
+}
+.dark.kkk_bg-coral {
+  background: linear-gradient(135deg, #b35a3b, #802d19);
+  color: #ffffff;
+}
+.dark.kkk_bg-coral:hover {
+  background: linear-gradient(135deg, #cc6644, #99331f);
+}
+
+/* ─── Magenta ─── */
+.kkk_bg-magenta {
+  background: linear-gradient(135deg, #ff4dff, #b300b3);
+  color: #f5f5f5;
+}
+.kkk_bg-magenta:hover {
+  background: linear-gradient(135deg, #ff66ff, #cc00cc);
+}
+.dark.kkk_bg-magenta {
+  background: linear-gradient(135deg, #993399, #660066);
+  color: #ffffff;
+}
+.dark.kkk_bg-magenta:hover {
+  background: linear-gradient(135deg, #a63aa6, #800080);
+}
+
+/* ─── Mint ─── */
+.kkk_bg-mint {
+  background: linear-gradient(135deg, #aaffcc, #33cc99);
+  color: #333333;
+}
+.kkk_bg-mint:hover {
+  background: linear-gradient(135deg, #bbffd9, #40d9a6);
+}
+.dark.kkk_bg-mint {
+  background: linear-gradient(135deg, #77b38c, #1f6654);
+  color: #ffffff;
+}
+.dark.kkk_bg-mint:hover {
+  background: linear-gradient(135deg, #85bf99, #26735f);
+}
+
+/* ─── Gold ─── */
+.kkk_bg-gold {
+  background: linear-gradient(135deg, #ffd700, #b38f00);
+  color: #333333;
+}
+.kkk_bg-gold:hover {
+  background: linear-gradient(135deg, #ffe033, #cca300);
+}
+.dark.kkk_bg-gold {
+  background: linear-gradient(135deg, #997300, #665000);
+  color: #ffffff;
+}
+.dark.kkk_bg-gold:hover {
+  background: linear-gradient(135deg, #a67a00, #734f00);
+}
+
+/* ─── Sky ─── */
+.kkk_bg-sky {
+  background: linear-gradient(135deg, #87ceeb, #4682b4);
+  color: #f5f5f5;
+}
+.kkk_bg-sky:hover {
+  background: linear-gradient(135deg, #9adcf0, #4a90c2);
+}
+.dark.kkk_bg-sky {
+  background: linear-gradient(135deg, #5c99a6, #2b4d59);
+  color: #ffffff;
+}
+.dark.kkk_bg-sky:hover {
+  background: linear-gradient(135deg, #66a3b3, #336673);
+}
+
+/* ─── Plum ─── */
+.kkk_bg-plum {
+  background: linear-gradient(135deg, #dda0dd, #993399);
+  color: #f5f5f5;
+}
+.kkk_bg-plum:hover {
+  background: linear-gradient(135deg, #e0b3e0, #a64ca6);
+}
+.dark.kkk_bg-plum {
+  background: linear-gradient(135deg, #996699, #663366);
+  color: #ffffff;
+}
+.dark.kkk_bg-plum:hover {
+  background: linear-gradient(135deg, #a673a6, #804080);
+}
+
+/* ─── Beige ─── */
+.kkk_bg-beige {
+  background: linear-gradient(135deg, #f5f5dc, #d2b48c);
+  color: #333333;
+}
+.kkk_bg-beige:hover {
+  background: linear-gradient(135deg, #f8f8e0, #dcbf9c);
+}
+.dark.kkk_bg-beige {
+  background: linear-gradient(135deg, #a69980, #665544);
+  color: #ffffff;
+}
+.dark.kkk_bg-beige:hover {
+  background: linear-gradient(135deg, #b3a68d, #736050);
+}
+
+/* ─── Slate ─── */
+.kkk_bg-slate {
+  background: linear-gradient(135deg, #708090, #2f4f4f);
+  color: #f5f5f5;
+}
+.kkk_bg-slate:hover {
+  background: linear-gradient(135deg, #7a8a9a, #3a5f5f);
+}
+.dark.kkk_bg-slate {
+  background: linear-gradient(135deg, #4d5966, #1f3333);
+  color: #ffffff;
+}
+.dark.kkk_bg-slate:hover {
+  background: linear-gradient(135deg, #596673, #264040);
+}
+
+/* ─── Charcoal ─── */
+.kkk_bg-charcoal {
+  background: linear-gradient(135deg, #36454f, #1c1c1c);
+  color: #f5f5f5;
+}
+.kkk_bg-charcoal:hover {
+  background: linear-gradient(135deg, #40505b, #262626);
+}
+.dark.kkk_bg-charcoal {
+  background: linear-gradient(135deg, #262f36, #0d0d0d);
+  color: #ffffff;
+}
+.dark.kkk_bg-charcoal:hover {
+  background: linear-gradient(135deg, #2d3840, #121212);
+}
