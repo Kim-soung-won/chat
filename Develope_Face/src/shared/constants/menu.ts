@@ -59,6 +59,14 @@ export const pathKeys = {
         return pathKeys.Components.Bar.root().concat('/snackbar')
       },
     },
+    Card: {
+      root() {
+        return pathKeys.Components.root().concat('/card')
+      },
+      Gradient() {
+        return pathKeys.Components.Card.root().concat('/gradient')
+      },
+    },
   },
 }
 
@@ -106,6 +114,11 @@ export const MenuItems = [
   {
     text: 'SnackBar',
     path: pathKeys.Components.Bar.SnackBar(),
+    icon: RadioButtonCheckedIcon,
+  },
+  {
+    text: 'Gradient Card',
+    path: pathKeys.Components.Card.Gradient(),
     icon: RadioButtonCheckedIcon,
   },
 ]

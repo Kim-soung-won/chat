@@ -32,6 +32,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // WebSocket 연결을 위한 엔드포인트 설정
         // 클라이언트는 ws://localhost:8080/ws로 접속하게 됩니다.
+        registry.addEndpoint("/ws")
+                .setAllowedOriginPatterns("*") // 또는 정확한 프론트 주소
+                .withSockJS();
+
         registry.addEndpoint("/ws").withSockJS();
     }
 }

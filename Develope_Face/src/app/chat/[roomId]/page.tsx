@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import styles from './page.module.css'
+import { useStomp } from '@/components/provider/StompProvider'
+import { ChatMessage } from '@/shared/libs/socket/sock-connect'
 
 // Dummy message data
 const messages = [
@@ -63,15 +65,23 @@ const messages = [
   },
 ]
 
-export default function ChatRoomPage({ params }: { params: { roomId: string } }) {
-  const [newMessage, setNewMessage] = useState('')
+export default function ChatRoomPage({
+  params,
+}: {
+  params: { roomId: string }
+}) {
+  const { clientRef } = useStomp()
+  const [message, setMessage] = useState('')
 
-  const handleSendMessage = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (newMessage.trim() === '') return
-    // Add message sending logic here
-    console.log(`Sending message: ${newMessage}`)
-    setNewMessage('')
+  const sendMessage = () => {
+    if (clientRef.current && clientRef.current.connected) {
+      const msg: ChatMessage = { sender: '홍길동', content: message }
+      clientRef.current.publish({
+        destination: '/app/chat.sendMessage',
+        body: JSON.stringify(msg),
+      })
+      setMessage('')
+    }
   }
 
   return (
@@ -125,11 +135,11 @@ export default function ChatRoomPage({ params }: { params: { roomId: string } })
         </main>
 
         <footer className={styles.footer}>
-          <form onSubmit={handleSendMessage} className={styles.form}>
+          <form onSubmit={sendMessage} className={styles.form}>
             <input
               type="text"
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               placeholder="Type a message..."
               className={styles.input}
             />

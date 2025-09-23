@@ -1,0 +1,76 @@
+/* CardStyling.css */
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+}
+.controls-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.controls {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: #1e293b;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+html:not(.dark) .controls {
+  background-color: #ffffff;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.control-group label {
+  font-weight: 500;
+}
+
+.control-group select,
+.control-group input {
+  width: 200px;
+}
+
+.custom-card {
+  width: 350px;
+  padding: 32px;
+  border-radius: 16px;
+
+  color: var(--text-color);
+  text-shadow: var(--text-shadow);
+  transition: all 0.5s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  /*
+   * 3. CSS에서 React로부터 전달받은 사용자 정의 속성 사용
+   * hsl(색상, 채도, 명도)
+   * 두 개의 다른 명도 값을 주어 Gradient 생성
+  */
+  border: 1px solid var(--card-right-hue);
+  background: linear-gradient(
+    var(--angle, 135deg),
+    hsl(
+      var(--card-left-hue),
+      var(--card-left-saturation),
+      var(--card-lightness-1)
+    ),
+    hsl(
+      var(--card-right-hue),
+      var(--card-right-saturation),
+      var(--card-lightness-2)
+    )
+  );
+}

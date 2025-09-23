@@ -32,6 +32,15 @@ const config: NextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   output: 'standalone',
   // 여기에 다른 Next.js 설정을 추가할 수 있습니다.
+
+  async rewrites() {
+    return [
+      {
+        source: '/dev/:path*',
+        destination: 'http://localhost:10500/:path*',
+      },
+    ]
+  },
 }
 
 export default withMDX(config)

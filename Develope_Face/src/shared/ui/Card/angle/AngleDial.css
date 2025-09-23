@@ -1,0 +1,25 @@
+/* AngleDial.css */
+.angle-dial-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.angle-dial-svg {
+  cursor: grab;
+  overflow: visible; /* 핸들이 SVG 밖으로 나가도 보이도록 설정 */
+}
+
+.angle-dial-svg:active {
+  cursor: grabbing;
+}
+
+.angle-display {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  background-color: #f2f2f2;
+  padding: 4px 12px;
+  border-radius: 8px;
+}

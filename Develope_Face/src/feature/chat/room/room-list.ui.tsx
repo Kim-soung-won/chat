@@ -1,6 +1,7 @@
 'use client'
 import { RoomQueires } from '@/entity/chat/room/room.queries'
 import { useQuery } from '@tanstack/react-query'
+import Link from 'next/link'
 
 export function RoomList() {
   const { data, isSuccess } = useQuery(
@@ -13,7 +14,7 @@ export function RoomList() {
         <ul>
           {data.map((room) => (
             <li style={{ marginTop: 10, background: 'skyBlue' }} key={room.id}>
-              {room.name}
+              <Link href={`/chat/${room.id}`}>{room.name}</Link>
             </li>
           ))}
         </ul>
