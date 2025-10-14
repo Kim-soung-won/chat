@@ -15,6 +15,7 @@
 
 .controls {
   display: flex;
+  flex-direction: column;
   gap: 20px;
   padding: 20px;
   background-color: #1e293b;
@@ -27,7 +28,7 @@ html:not(.dark) .controls {
 
 .control-group {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 8px;
 }
 

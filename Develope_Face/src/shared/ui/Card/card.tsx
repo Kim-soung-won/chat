@@ -1,5 +1,4 @@
 'use client'
-import { set } from 'node_modules/zod/v3/external.cjs'
 import './card.css'
 import { useState } from 'react'
 import { AngleDial } from './angle/AngleDial'
@@ -66,24 +65,24 @@ export function CustomCard({ children }: CustomCardProps) {
         <div className="controls">
           <div className="control-group">
             <label htmlFor="color-select">색상 계열 선택:</label>
-            <select
-              id="color-select"
+            <input
+              id="saturation-slider"
+              type="range"
+              min="0"
+              max="360"
               value={leftHue}
+              style={{
+                accentColor: `hsl(${leftHue}, ${leftSaturation}%, 50%)`,
+              }}
               onChange={(e) => setLeftHue(Number(e.target.value))}
-            >
-              {colorOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
+            />
           </div>
           <div className="control-group">
             <label htmlFor="saturation-slider">
               채도 조절: {leftSaturation}%
             </label>
             <input
-              id="saturation-slider"
+              id="color-select"
               type="range"
               min="0"
               max="100"
@@ -96,17 +95,17 @@ export function CustomCard({ children }: CustomCardProps) {
         <div className="controls">
           <div className="control-group">
             <label htmlFor="color-select">색상 계열 선택:</label>
-            <select
+            <input
               id="color-select"
+              type="range"
+              min="0"
+              max="360"
               value={rightHue}
+              style={{
+                accentColor: `hsl(${rightHue}, ${rightSaturation}%, 50%)`,
+              }}
               onChange={(e) => setRightHue(Number(e.target.value))}
-            >
-              {colorOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
+            />
           </div>
           <div className="control-group">
             <label htmlFor="saturation-slider">
